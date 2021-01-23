@@ -49,7 +49,7 @@
       </Label>
       <Button fx:id="Reg_Register_button" layoutX="220.0" layoutY="342.0" mnemonicParsing="false" onAction="#Registration" prefHeight="26.0" prefWidth="159.0" style="-fx-background-color: #4c4c4c #4c4c4c;" text="Register" textFill="WHITE" />
       <Button fx:id="app_Login_button" layoutX="390.0" layoutY="342.0" mnemonicParsing="false" onAction="#openLoginPage" style="-fx-background-color: #4c4c4c;" text="Login" textFill="WHITE" />
-      <Button fx:id="app_home_button" layoutX="156.0" layoutY="342.0" mnemonicParsing="false" onAction="#openHomePage" prefHeight="26.0" prefWidth="53.0" style="-fx-background-color: #4c4c4c;" text="Home" textFill="WHITE" />
+      <Button fx:id="app_home_button" layoutX="152.0" layoutY="342.0" mnemonicParsing="false" onAction="#openHomePage" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #4c4c4c;" text="Home" textFill="WHITE" />
       <Label fx:id="reg_error" layoutX="381.0" layoutY="142.0" prefHeight="26.0" prefWidth="161.0" text="ERROR" visible="false" />
    </children>
 </AnchorPane>

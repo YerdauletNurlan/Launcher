@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <TextField layoutX="220.0" layoutY="218.0" promptText="Password" style="-fx-background-color: #4c4c4c;">
+      <TextField fx:id="Login_Password" layoutX="220.0" layoutY="218.0" promptText="Password" style="-fx-background-color: #4c4c4c;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -27,13 +27,14 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="220.0" layoutY="178.0" promptText="Email" style="-fx-background-color: #4c4c4c;">
+      <TextField fx:id="Login_Email" layoutX="220.0" layoutY="178.0" promptText="Email" style="-fx-background-color: #4c4c4c;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <Button layoutX="220.0" layoutY="258.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="159.0" style="-fx-background-color: #4c4c4c #4c4c4c;" text="Login" textFill="WHITE" />
+      <Button fx:id="Login_Login_button" layoutX="220.0" layoutY="258.0" mnemonicParsing="false" onAction="#Login" prefHeight="26.0" prefWidth="159.0" style="-fx-background-color: #4c4c4c #4c4c4c;" text="Login" textFill="WHITE" />
       <Button fx:id="app_Registration_button" layoutX="390.0" layoutY="258.0" mnemonicParsing="false" onAction="#openRegistrationPage" style="-fx-background-color: #4c4c4c;" text="Register" textFill="WHITE" />
       <Button fx:id="app_home_button" layoutX="150.0" layoutY="258.0" mnemonicParsing="false" onAction="#openHomePage" prefHeight="26.0" prefWidth="59.0" style="-fx-background-color: #4c4c4c;" text="Home" textFill="WHITE" />
+      <Label fx:id="log_error" layoutX="390.0" layoutY="177.0" prefHeight="26.0" prefWidth="199.0" text="ERROR" visible="false" />
    </children>
 </AnchorPane>

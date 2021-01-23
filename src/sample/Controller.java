@@ -65,7 +65,15 @@ public class Controller {
     private Button Reg_Register_button;
     @FXML
     private Label reg_error;
-
+    //Login.fxml
+    @FXML
+    private TextField Login_Email;
+    @FXML
+    private TextField Login_Password;
+    @FXML
+    private Button Login_Login_button;
+    @FXML
+    private Label log_error;
 
     public boolean checkEmail(String email)throws SQLException {
         boolean check = true;
@@ -157,11 +165,47 @@ public class Controller {
                     "VALUES(" + id + ", \'" + email + "\', \'" + name + "\', \'" + surname + "\', " + age + ", \'" + password + "\');";
             System.out.println(str);
             addSQL(str);
+            openHomePage();
         }
         else
         {
             reg_error.setText("Please change email");
             reg_error.setVisible(true);
         }
+    }
+
+    @FXML
+    public void Login() throws SQLException{
+        String email = Login_Email.getText();
+        String password = Login_Password.getText();
+        String checkEM = "";
+        String checkPWD = "";
+        int check = 0;
+        Connection dbConnection = getDBConnection();
+        Statement statement = dbConnection.createStatement();
+        ResultSet rs = statement.executeQuery("select email, password from customers " +
+                "where email = \'"+ email +"\' and password = \'" + password + "\';");
+        System.out.println(email + password);
+        while (rs.next())
+        {
+            checkEM=rs.getString("email");
+            checkPWD=rs.getString("password");
+            check++;
+        }
+        if(check!=0)
+        {
+            log_error.setVisible(false);
+            System.out.println("WORKS");
+            openHomePage();
+            app_Login_button.setVisible(false);
+            app_Registration_button.setVisible(false);
+
+        }
+        else {
+            log_error.setText("email or password incorrect");
+            log_error.setVisible(true);
+            System.out.println("ERROR");
+        }
+
     }
 }

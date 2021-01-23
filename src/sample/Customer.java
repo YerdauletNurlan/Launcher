@@ -1,6 +1,6 @@
 package sample;
 
-public class User {
+public class Customer {
     private int id;
     private String name;
     private String surname;
@@ -56,9 +56,9 @@ public class User {
         this.password = password;
     }
 
-    public User (){}
+    public Customer (){}
 
-    public User(int id, String name, String surname, String email, int age, String password) {
+    public Customer(int id, String name, String surname, String email, int age, String password) {
         this.id = id;
         this.name = name;
         this.surname = surname;
