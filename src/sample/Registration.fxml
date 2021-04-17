@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,47 +11,58 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="620.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RegistrationController">
    <children>
-      <TextField fx:id="Reg_Password" layoutX="220.0" layoutY="262.0" promptText="Password" style="-fx-background-color: white; -fx-border-color: #4c4c4c;">
+      <TextField fx:id="Email" cache="true" cacheHint="SCALE" layoutX="236.0" layoutY="142.0" promptText="Email" style="-fx-background-color: #000000; -fx-border-color: white; -fx-text-inner-color: white;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <opaqueInsets>
+            <Insets right="5000.0" top="500.0" />
+         </opaqueInsets>
+      </TextField>
+      <TextField fx:id="Name" layoutX="236.0" layoutY="182.0" promptText="Name" style="-fx-background-color: #000000; -fx-border-color: white; -fx-text-inner-color: white;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="Reg_Email" cache="true" cacheHint="SCALE" layoutX="220.0" layoutY="142.0" promptText="Email" style="-fx-background-color: white; -fx-border-color: #4c4c4c;">
+      <TextField fx:id="Surname" layoutX="236.0" layoutY="222.0" promptText="Surname" style="-fx-background-color: #000000; -fx-border-color: white; -fx-text-inner-color: white;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="Reg_Name" layoutX="220.0" layoutY="182.0" promptText="Name" style="-fx-background-color: white; -fx-border-color: #4c4c4c;">
+      <TextField fx:id="Age" layoutX="236.0" layoutY="302.0" promptText="Age" style="-fx-background-color: #000000; -fx-border-color: white; -fx-text-inner-color: white;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="Reg_Surname" layoutX="220.0" layoutY="222.0" promptText="Surname" style="-fx-background-color: white; -fx-border-color: #4c4c4c;">
+      <PasswordField fx:id="Password" layoutX="236.0" layoutY="262.0" prefHeight="27.0" prefWidth="159.0" promptText="Password" style="-fx-background-color: #000000; -fx-border-color: white; -fx-text-inner-color: white;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
-      </TextField>
-      <TextField fx:id="Reg_Age" layoutX="220.0" layoutY="302.0" promptText="Age" style="-fx-background-color: white; -fx-border-color: #4c4c4c;">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </TextField>
-      <Line endX="410.0" endY="33.40000915527344" layoutX="190.0" layoutY="73.0" startX="-189.99998474121094" startY="33.40000915527344" />
-      <ImageView fitHeight="105.0" fitWidth="180.0" layoutX="210.0">
+      </PasswordField>
+      <ImageView fitHeight="294.0" fitWidth="169.0" layoutY="106.0">
          <image>
             <Image url="@ICON.png" />
          </image>
       </ImageView>
-      <Label layoutX="236.0" layoutY="107.0" text="Registration" textFill="#4c4c4c">
+      <ImageView fitHeight="294.0" fitWidth="169.0" layoutX="452.0" layoutY="106.0">
+         <image>
+            <Image url="@ICON.png" />
+         </image>
+      </ImageView>
+      <Line endX="430.0" endY="33.40000915527344" layoutX="190.0" layoutY="73.0" startX="-189.99998474121094" startY="33.40000915527344" />
+      <Label layoutX="246.0" layoutY="105.0" text="Registration">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="Reg_Register_button" layoutX="220.0" layoutY="342.0" mnemonicParsing="false" onAction="#Registration" prefHeight="26.0" prefWidth="159.0" style="-fx-background-color: #4c4c4c #4c4c4c;" text="Register" textFill="WHITE" />
-      <Button fx:id="app_Login_button" layoutX="390.0" layoutY="342.0" mnemonicParsing="false" onAction="#openLoginPage" style="-fx-background-color: #4c4c4c;" text="Login" textFill="WHITE" />
-      <Button fx:id="app_home_button" layoutX="152.0" layoutY="342.0" mnemonicParsing="false" onAction="#openHomePage" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #4c4c4c;" text="Home" textFill="WHITE" />
-      <Label fx:id="reg_error" layoutX="381.0" layoutY="142.0" prefHeight="26.0" prefWidth="161.0" text="ERROR" visible="false" />
+      <Button fx:id="Register_button" layoutX="236.0" layoutY="342.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="159.0" style="-fx-background-color: #000000;" text="Register" textFill="WHITE" />
+      <Button fx:id="Login_button" layoutX="406.0" layoutY="342.0" mnemonicParsing="false" style="-fx-background-color: #000000;" text="Login" textFill="WHITE" />
+      <Button fx:id="app_home_button" layoutX="168.0" layoutY="342.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #000000;" text="Home" textFill="WHITE" visible="false" />
+      <Label fx:id="error" layoutX="397.0" layoutY="142.0" prefHeight="26.0" prefWidth="224.0" text="ERROR" textFill="#f50b0b" visible="false">
+         <font>
+            <Font size="9.0" />
+         </font></Label>
    </children>
 </AnchorPane>
