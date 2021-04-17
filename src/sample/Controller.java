@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.prefs.Preferences;
 
 public class Controller {
     private static Connection getDBConnection() {
@@ -65,7 +68,22 @@ public class Controller {
     private Button Reg_Register_button;
     @FXML
     private Label reg_error;
-
+    //Login.fxml
+    @FXML
+    private TextField Login_Email;
+    @FXML
+    private TextField Login_Password;
+    @FXML
+    private Button Login_Login_button;
+    @FXML
+    private Label log_error;
+    //Registred.fxml
+    @FXML
+    private Label Registred_email;
+    String registred_user="no user";
+    ArrayList<String> reg_user=new ArrayList<>();
+    Preferences userPreferences = Preferences.userRoot();
+    Customer customer = new Customer();
 
     public boolean checkEmail(String email)throws SQLException {
         boolean check = true;
@@ -86,44 +104,65 @@ public class Controller {
         }
 
     @FXML
-    public void openLoginPage()
-    {
-        //app_Login_button.getScene().getWindow().hide();
+    public void openLoginPage() {
+        app_Login_button.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/sample/Login.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root, 700, 450));
-        stage.showAndWait();
+            loader.setLocation(getClass().getResource("/sample/Login.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, 700, 450));
+            stage.showAndWait();
     }
 
     @FXML
     public void openRegistrationPage()
     {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/sample/Registration.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root, 700, 450));
-        stage.showAndWait();
+        //FXMLLoader loader = new FXMLLoader();
+            app_Registration_button.getScene().getWindow().hide();
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/sample/Registration.fxml"));
+            try {
+                fxmlLoader.load();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = fxmlLoader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
     }
 
     @FXML
-    public void openHomePage()
+    public void openHomePage() {
+            app_home_button.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/app.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, 700, 450));
+            //Registred_email.setText("registred_user");
+            stage.showAndWait();
+            //app_Registration_button.setVisible(buttonsVisible);
+            //app_Login_button.setVisible(buttonsVisible);
+
+    }
+
+    public void openRegistredPage()
     {
         //app_home_button.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/sample/app.fxml"));
+        loader.setLocation(getClass().getResource("/sample/registred.fxml"));
         try {
             loader.load();
         } catch (IOException e) {
@@ -133,8 +172,15 @@ public class Controller {
         Stage stage = new Stage();
         stage.setScene(new Scene(root, 700, 450));
         stage.showAndWait();
+        //app_Registration_button.setVisible(buttonsVisible);
+        //app_Login_button.setVisible(buttonsVisible);
     }
 
+    @FXML
+    public void showUser()
+    {
+        System.out.println(customer.getEmail());
+    }
 
     @FXML
     public void Registration() throws SQLException {
@@ -157,6 +203,7 @@ public class Controller {
                     "VALUES(" + id + ", \'" + email + "\', \'" + name + "\', \'" + surname + "\', " + age + ", \'" + password + "\');";
             System.out.println(str);
             addSQL(str);
+            openHomePage();
         }
         else
         {
@@ -164,4 +211,51 @@ public class Controller {
             reg_error.setVisible(true);
         }
     }
+
+    @FXML
+    public void Login() throws SQLException{
+        String email = Login_Email.getText();
+        String password = Login_Password.getText();
+        String checkEM = "";
+        String checkPWD = "";
+        int check = 0;
+        Connection dbConnection = getDBConnection();
+        Statement statement = dbConnection.createStatement();
+        ResultSet rs = statement.executeQuery("select email, password from customers " +
+                "where email = \'"+ email +"\' and password = \'" + password + "\';");
+        System.out.println(email + password);
+        while (rs.next())
+        {
+            checkEM=rs.getString("email");
+            checkPWD=rs.getString("password");
+            check++;
+        }
+        if(check!=0)
+        {
+            //log_error.setVisible(false);
+            System.out.println("WORKS");
+            customer.setEmail(email);
+            customer.setPassword(password);
+            System.out.println("login" + email + password);
+            openHomePage();
+        }
+        else {
+            log_error.setText("email or password incorrect");
+            log_error.setVisible(true);
+            System.out.println("ERROR");
+        }
+    }
+        /*
+    public String authorize(String email, String password) throws  SQLException{
+        String str = "";
+        Connection dbConnection = getDBConnection();
+        Statement statement = dbConnection.createStatement();
+        ResultSet rs = statement.executeQuery("select email, password from customers " +
+                "where email = \'"+ email +"\' and password = \'" + password + "\';");
+        while (rs.next())
+        {
+            str=str + rs.getString("email");
+        }
+        return str;
+    }*/
 }

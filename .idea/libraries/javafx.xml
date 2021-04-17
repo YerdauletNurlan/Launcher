@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="javafx">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../libraries/javafx-sdk-11.0.2/lib" />
+      <root url="jar://$USER_HOME$/Downloads/postgresql-42.2.18.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/chilkat-9.5.0-jdk11-x64/chilkat.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../libraries/javafx-sdk-11.0.2/lib" />
+      <root url="jar://$USER_HOME$/Downloads/chilkat-9.5.0-jdk11-x64.zip!/chilkat-9.5.0-jdk11-x64" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../libraries/javafx-sdk-11.0.2/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../libraries/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
